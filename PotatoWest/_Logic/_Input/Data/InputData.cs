@@ -8,7 +8,9 @@ namespace PotatoWest._Input.Data
     {
         public float FAxis;
         public float RAxis;
+        public Vector2 MoveInput;
         public bool MenuKeyPressed;
         public ShootInputData ShootInputData;
+        public KeyActionInfo JumpKeyData;
     }
 }

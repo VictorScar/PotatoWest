@@ -14,7 +14,9 @@ namespace PotatoWest._Logic._Items
         [SerializeField] private float shellDamage = 50f;
         [SerializeField] private float shootCooldown = 0.2f;
         [SerializeField] private Transform muzzle;
-      
+        [SerializeField] private float maxShootDistance = 100f;
+        [SerializeField] private float damage = 100f;
+        
         private float _lastShootTime;
         private int _currentAmmoCount;
         private bool _isReloading = false;
@@ -24,6 +26,7 @@ namespace PotatoWest._Logic._Items
         public Transform Muzzle => muzzle;
         public float ShootCooldown => shootCooldown;
         public float ReloadingTime => reloadingDuration;
+        public float Damage => damage;
         
         private void Update()
         {
@@ -46,9 +49,9 @@ namespace PotatoWest._Logic._Items
                 if (_currentAmmoCount > 0)
                 {
                     onShoot?.Invoke();
-                    Debug.Log("Shoot");
+                    //Debug.Log("Shoot");
                     
-                   if(Physics.Raycast(muzzle.position, (scopePosition-muzzle.position).normalized, out var hit, 20f))
+                   if(Physics.Raycast(muzzle.position, (scopePosition-muzzle.position).normalized, out var hit, maxShootDistance))
                    {
                        if (hit.collider.TryGetComponent<IShootTarget>(out var target))
                        {

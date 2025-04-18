@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e6c2bc28e37bff4ab89940f2bbd9d04, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
+  gamePrefab: {fileID: 6325493097706255595, guid: 2dd4a8b89dbebc94cbf58699581c06b7,
+    type: 3}
   playerConfig: {fileID: 11400000, guid: 2bb8933ab8122534282105f81b44ab8c, type: 2}
+  levelsConfig: {fileID: 11400000, guid: 9b6ca6761da254844bc601e261b9e1b6, type: 2}

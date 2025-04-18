@@ -8,11 +8,13 @@ namespace PotatoWest._Logic._Configs
     {
         [SerializeField] private float moveSpeed;
         [SerializeField] private float rotateSpeed;
+        [SerializeField] private float jumpForce = 20f;
         [SerializeField] private ItemInfo[] startItems;
         [SerializeField] private int inventorySize;
         public ItemInfo[] StartItems => startItems;
         public float MoveSpeed => moveSpeed;
         public float RotateSpeed => rotateSpeed;
         public int InventorySize => inventorySize;
+        public float JumpForce => jumpForce;
     }
 }

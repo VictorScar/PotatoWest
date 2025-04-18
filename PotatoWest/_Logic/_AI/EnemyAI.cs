@@ -6,27 +6,27 @@ using UnityEngine;
 
 namespace PotatoWest._Logic._AI
 {
-    public class EnemyAI : MonoBehaviour, IShootTarget
+    public class EnemyAI : CharacterAI
     {
-        // [SerializeField] private PlayerMover mover;
         [SerializeField] private EquipManager equipManager;
         [SerializeField] private CharacterInventory inventory;
-        //  [SerializeField] private PlayerShootingController shootingController;
+        [SerializeField] private AIShootSystem shootingController;
         // [SerializeField] private WeaponBase baseGun;
         // private PlayerPawnConfig _playerConfig;
 
-        public void Init()
+        protected override void OnInit()
         {
-            
+           // shootingController.Init();
         }
 
-        public void SetAIState()
+        protected override void DoAction()
         {
-            
+            Debug.Log("Attack");
         }
 
-        public void OnHit(MainWeaponBase mainWeapon)
+        public override void OnHit(MainWeaponBase mainWeapon)
         {
+            base.OnHit(mainWeapon);
             Debug.Log("Hit enemy!");
         }
     }

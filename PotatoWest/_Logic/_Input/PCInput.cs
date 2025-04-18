@@ -12,6 +12,7 @@ public class PCInput : PlayerInput
     [SerializeField] private KeyCode negativeForwardKey = KeyCode.S;
     [SerializeField] private KeyCode positiveRightKey = KeyCode.D;
     [SerializeField] private KeyCode negativeRightKey = KeyCode.A;
+    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
 
     [Header("Utill Inputs")] [SerializeField]
     private KeyCode openMenuKey = KeyCode.Q;
@@ -31,16 +32,29 @@ public class PCInput : PlayerInput
         if (isEnabled)
         {
             var inputdata = new InputData();
+            inputdata.MoveInput = new Vector2();
 
-            inputdata.FAxis = Convert.ToInt32(Input.GetKey(positiveForwardKey)) -
-                              Convert.ToInt32(Input.GetKey(negativeForwardKey));
-            inputdata.RAxis = Convert.ToInt32(Input.GetKey(positiveRightKey)) -
-                              Convert.ToInt32(Input.GetKey(negativeRightKey));
+            inputdata.MoveInput.x = Convert.ToInt32(Input.GetKey(positiveForwardKey)) -
+                                  Convert.ToInt32(Input.GetKey(negativeForwardKey));
+            inputdata.MoveInput.y = Convert.ToInt32(Input.GetKey(positiveRightKey)) -
+                                     Convert.ToInt32(Input.GetKey(negativeRightKey));
 
             inputdata.ShootInputData = GetShootInputData();
-
+            inputdata.JumpKeyData = GetKeyData(jumpKey);
             _data = inputdata;
         }
+    }
+
+    private KeyActionInfo GetKeyData(KeyCode keyCode)
+    {
+        var keyActionInfo = new KeyActionInfo();
+
+        keyActionInfo.IsPressed = Input.GetKey(keyCode);
+        keyActionInfo.HasBeenPressed = keyActionInfo.IsPressed;
+
+        keyActionInfo.HasBeenReleased = !_data.JumpKeyData.IsPressed;
+
+        return keyActionInfo;
     }
 
     private ShootInputData GetShootInputData()
@@ -51,7 +65,7 @@ public class PCInput : PlayerInput
         var shootBtnInfo = new KeyActionInfo();
 
         shootBtnInfo.IsPressed = Input.GetMouseButton(0);
-        shootBtnInfo.HasBeenPressed = true;
+        shootBtnInfo.HasBeenPressed = shootBtnInfo.IsPressed;
 
         shootBtnInfo.HasBeenReleased = !_data.ShootInputData.ShootKeyInfo.IsPressed;
 

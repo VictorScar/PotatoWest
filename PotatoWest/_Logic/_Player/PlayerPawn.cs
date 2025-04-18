@@ -16,13 +16,14 @@ namespace PotatoWest._Player
         [SerializeField] private EquipManager equipManager;
         [SerializeField] private CharacterInventory inventory;
         [SerializeField] private PlayerShootingController shootingController;
+        [SerializeField] private CharacterController characterController;
         private PlayerPawnConfig _playerConfig;
 
         public void Init(PlayerPawnConfig config)
         {
             _playerConfig = config;
             camController?.Init(null);
-            mover?.Init(_playerConfig);
+            mover?.Init(characterController);
             inventory?.Init(config.StartItems, config.InventorySize);
             equipManager.Init(inventory);
             shootingController?.Init(camController.PlayerCamera, equipManager);
@@ -30,7 +31,14 @@ namespace PotatoWest._Player
 
         public void SetInputs(InputData inputData)
         {
-            mover.SetInputs(inputData);
+            mover.Move(inputData.MoveInput.x, _playerConfig.MoveSpeed);
+            mover.Rotate(inputData.MoveInput.y, _playerConfig.RotateSpeed);
+
+            if (inputData.JumpKeyData.IsPressed && inputData.JumpKeyData.HasBeenReleased)
+            {
+                mover.Jump(_playerConfig.JumpForce);
+            }
+
             shootingController.SetInputs(inputData.ShootInputData);
         }
     }

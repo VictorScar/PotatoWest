@@ -188,6 +188,7 @@ MonoBehaviour:
   shellDamage: 50
   shootCooldown: 0.4
   muzzle: {fileID: 1655338665721352814}
+  maxShootDistance: 200
 --- !u!1 &4334494609579811288
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles:
   - {fileID: 3295863708903057911}
-  weaponBase: {fileID: 6310306187378691873}
+  mainWeaponBase: {fileID: 6310306187378691873}
 --- !u!1 &4683968212479110079
 GameObject:
   m_ObjectHideFlags: 0

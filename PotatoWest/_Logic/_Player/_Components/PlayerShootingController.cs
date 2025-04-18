@@ -7,7 +7,8 @@ namespace PotatoWest._Logic._Player._Components
     public class PlayerShootingController : MonoBehaviour
     {
         [SerializeField] private Transform scope;
-
+        [SerializeField] private float maxShootDistance = 100f;
+        
         private Camera _playerCamera;
         private EquipManager _equipManager;
         public Transform Scope => scope;
@@ -24,7 +25,7 @@ namespace PotatoWest._Logic._Player._Components
             {
                 var shootRay = _playerCamera.ScreenPointToRay(inputData.ScopePosition);
 
-                if (Physics.Raycast(shootRay, out var hit, 30f))
+                if (Physics.Raycast(shootRay, out var hit, maxShootDistance))
                 {
                     scope.position = hit.point;
                 }

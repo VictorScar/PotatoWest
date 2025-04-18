@@ -6,69 +6,94 @@ using UnityEngine;
 namespace ScarFramework.UI
 {
     [RequireComponent(typeof(CanvasGroup))]
-    [RequireComponent(typeof(RectTransform))]
     public class UIView : MonoBehaviour
     {
         [Header("Default References")] [SerializeField]
-        private RectTransform rect;
+        protected RectTransform rect;
 
         [SerializeField] private CanvasGroup cg;
 
         [Header("Animations")] [SerializeField]
         private UIAnimator showInAnimator;
 
-        [SerializeField] private UIAnimator showOutAnimator;
         [SerializeField] private UIAnimator hideInAnimator;
-        [SerializeField] private UIAnimator hideOutAnimator;
+
 
         public RectTransform Rect => rect;
         public CanvasGroup CG => cg;
 
         public void Init()
         {
-            if (!rect)
-            {
-                GetComponent<RectTransform>();
-            }
-
             if (!cg)
             {
                 cg = GetComponent<CanvasGroup>();
             }
             
             showInAnimator?.Init(this);
-            showOutAnimator?.Init(this);
-            hideInAnimator?.Init(this);
-            hideOutAnimator?.Init(this);
+           hideInAnimator?.Init(this);
 
             OnInit();
         }
 
         [Button("Show")]
+        public void DebugShow()
+        {
+            Show();
+        }
+
+        [Button("Hide")]
+        public void DebugHide()
+        {
+            Hide();
+        }
+
+        [Button("Init")]
+        public void DebugInit()
+        {
+            Init();
+        }
+
+        [Button("Kill")]
+        public void DebugKill()
+        {
+            showInAnimator?.Kill();
+            hideInAnimator?.Kill();
+        }
+
         public void Show(bool immediately = false)
         {
             if (!immediately)
             {
-                gameObject.SetActive(true);
-                showInAnimator?.PlayAnimation().OnComplete(OnShow);
-                
+                if (showInAnimator)
+                {
+                    showInAnimator.PlayAnimation(this).OnKill(ShowInternal);
+                    gameObject.SetActive(true);
+                }
+                else
+                {
+                    ShowInternal();
+                }
             }
             else
             {
-                gameObject.SetActive(true);
-                OnShow();
+                ShowInternal();
             }
-           
         }
-   
-        [Button("Hide")]
+
         public void Hide(bool immediately = false)
         {
+            showInAnimator?.Kill();
+
             if (!immediately)
             {
-                gameObject.SetActive(false);
-                hideInAnimator?.PlayAnimation().OnComplete(OnHide);
-                
+                if (hideInAnimator)
+                {
+                    hideInAnimator.PlayAnimation(this).OnKill(HideInternal);
+                }
+                else
+                {
+                    HideInternal();
+                }
             }
             else
             {
@@ -77,16 +102,30 @@ namespace ScarFramework.UI
             }
         }
 
+        private void ShowInternal()
+        {
+            gameObject.SetActive(true);
+            OnShow();
+        }
+
+        private void HideInternal()
+        {
+            gameObject.SetActive(false);
+            OnHide();
+        }
+
         protected virtual void OnInit()
         {
         }
 
         protected virtual void OnShow()
         {
+            // Debug.Log("OnShow");
         }
 
         protected virtual void OnHide()
         {
+            // Debug.Log("OnHide");
         }
     }
 }

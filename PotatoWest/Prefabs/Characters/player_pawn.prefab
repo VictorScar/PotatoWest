@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2277540063174529445}
   - component: {fileID: 1218614524920616180}
   - component: {fileID: 8128398543519893741}
-  - component: {fileID: 1794509850856662831}
   m_Layer: 11
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1794509850856662831
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47699841894639203}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &244300656294178157
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5857650810473578963}
   - component: {fileID: 1772045098492980495}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +538,7 @@ GameObject:
   - component: {fileID: 5891352932420852643}
   - component: {fileID: 2038067710241826415}
   - component: {fileID: 791399330489283584}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: scope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +621,7 @@ GameObject:
   - component: {fileID: 1516330202770479715}
   - component: {fileID: 5269591835121285089}
   - component: {fileID: 1028800386539855017}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hat_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -725,7 +703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3456882375514358498}
   - component: {fileID: 200152432062779139}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shooting_controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,7 +833,7 @@ GameObject:
   - component: {fileID: 1811646534375760674}
   - component: {fileID: 4257748808745148513}
   - component: {fileID: 1373849315762115615}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,6 +1008,7 @@ MonoBehaviour:
   equipManager: {fileID: 8619296334575303508}
   inventory: {fileID: 1772045098492980495}
   shootingController: {fileID: 200152432062779139}
+  characterController: {fileID: 1745620901606423223}
 --- !u!143 &1745620901606423223
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1067,7 +1046,6 @@ GameObject:
   - component: {fileID: 919627821298309491}
   - component: {fileID: 5224585736675849569}
   - component: {fileID: 8075353531960484592}
-  - component: {fileID: 6294189841796176423}
   m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
@@ -1140,27 +1118,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6294189841796176423
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7382534271156711421}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8102619428653702314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8047635054541598299}
   - component: {fileID: 8619296334575303508}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: equip_manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1334,7 +1291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45a50c066e30df4ab08265f8ec0e765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motor: {fileID: 1745620901606423223}
+  _verticalForce: 0
+  _gravityForce: 9.81
+  isGrounded: 1
 --- !u!1 &8885964654222939803
 GameObject:
   m_ObjectHideFlags: 0

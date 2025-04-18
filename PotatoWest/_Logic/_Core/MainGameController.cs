@@ -1,13 +1,14 @@
 using System;
 using PotatoWest._Logic._Configs;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PotatoWest._Logic._Core
 {
     public class MainGameController : MonoBehaviour
     {
         [SerializeField] private GameConfig config;
-        [SerializeField] private Player player;
+       [SerializeField] private PlayerController playerController;
         private string serviceProvider;
         
         public static MainGameController I { get; private set; }
@@ -28,7 +29,14 @@ namespace PotatoWest._Logic._Core
         {
             DontDestroyOnLoad(gameObject);
             
-            player.Init(config.PlayerConfig);
+            playerController.Init(config.PlayerConfig);
+        }
+        
+        
+
+        public void Init()
+        {
+            
         }
     }
 }
