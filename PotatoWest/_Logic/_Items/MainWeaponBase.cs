@@ -42,7 +42,7 @@ namespace PotatoWest._Logic._Items
             _lastShootTime = 0f;
         }
 
-        public void Shoot(Vector3 scopePosition)
+        public void Shoot(Vector3 muuzzlePosition, Vector3 shootDir)
         {
             if (_lastShootTime <= 0)
             {
@@ -51,7 +51,7 @@ namespace PotatoWest._Logic._Items
                     onShoot?.Invoke();
                     //Debug.Log("Shoot");
                     
-                   if(Physics.Raycast(muzzle.position, (scopePosition-muzzle.position).normalized, out var hit, maxShootDistance))
+                   if(Physics.Raycast(muuzzlePosition, shootDir, out var hit, maxShootDistance))
                    {
                        if (hit.collider.TryGetComponent<IShootTarget>(out var target))
                        {

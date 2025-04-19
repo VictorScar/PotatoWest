@@ -60,11 +60,11 @@ public class CharacterAI : MonoBehaviour, IShootTarget
         DestroyCharacter();
     }
 
-    private async UniTask DestroyCharacter()
+    public async UniTask DestroyCharacter()
     {
-        await UniTask.WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
-        onRemove.Invoke(this);
-        Destroy(gameObject);
+        await UniTask.WaitForSeconds(1f);
+        onRemove?.Invoke(this);
+        //Destroy(gameObject);
     }
 
     [Button("DestroyChar")]

@@ -37,8 +37,10 @@ namespace PotatoWest._Logic._Level
                 }
             }
         }
-
-        private void ClearSpawnenActors()
+        
+        
+[Button("Clear")]
+        public void ClearSpawnenActors()
         {
             if (_spawnedActorsData != null)
             {
@@ -54,19 +56,21 @@ namespace PotatoWest._Logic._Level
         [Button("SpawnNPC")]
         public void SpawnActor()
         {
-            Debug.Log("Spawn Actor!");
+            
             if (GetRandomFreeSpawn(out var spawn))
             {
                 var actorPrefab = GetPrefab();
 
                 if (actorPrefab != null)
                 {
+                    spawn.IsBusy = true;
                     var actor = Instantiate(actorPrefab, transform);
                     actor.transform.position = spawn.SpawnPoint.position;
                     actor.transform.rotation = spawn.SpawnPoint.rotation;
                     actor.Init();
                     actor.onRemove += RemoveActor;
                     _spawnedActorsData.Add(actor, spawn);
+                    Debug.Log("Spawn Actor!");
                 }
                 else
                 {
@@ -84,8 +88,13 @@ namespace PotatoWest._Logic._Level
             actor.onRemove -= RemoveActor;
 
             var actorData = _spawnedActorsData[actor];
-            actorData.IsBusy = false;
-            Destroy(actor.gameObject);
+           actorData.IsBusy = false;
+
+           if (actor)
+           {
+               Destroy((actor.gameObject));
+           }
+           
         }
 
         private CharacterAI GetPrefab()
@@ -115,7 +124,7 @@ namespace PotatoWest._Logic._Level
                 {
                     if (!spawns[i].IsBusy)
                     {
-                        spawn = spawns[spawnIndex];
+                        spawn = spawns[i];
                         return true;
                     }
                 }
@@ -124,7 +133,7 @@ namespace PotatoWest._Logic._Level
                 {
                     if (!spawns[i].IsBusy)
                     {
-                        spawn = spawns[spawnIndex];
+                        spawn = spawns[i];
                         return true;
                     }
                 }

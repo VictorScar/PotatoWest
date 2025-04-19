@@ -8,7 +8,7 @@ namespace PotatoWest._Logic._Player._Components
     {
         [SerializeField] private Transform scope;
         [SerializeField] private float maxShootDistance = 100f;
-        
+
         private Camera _playerCamera;
         private EquipManager _equipManager;
         public Transform Scope => scope;
@@ -33,21 +33,24 @@ namespace PotatoWest._Logic._Player._Components
                 {
                     scope.position = shootRay.origin + shootRay.direction * 100f;
                 }
-                
+
                 _equipManager?.WeaponSocket.LookAt(scope);
 
                 if (inputData.ShootKeyInfo.IsPressed && inputData.ShootKeyInfo.HasBeenReleased)
                 {
-                    Shoot();
+                    Shoot(inputData.ScopePosition);
                 }
             }
         }
 
-        public void Shoot()
+        public void Shoot(Vector3 scopePos)
         {
+            var muzzleDir = _playerCamera.ScreenPointToRay(scopePos);
+           // Debug.Log("Scope Pos: " + muzzleDir.origin);
             if (_equipManager.EquipedWeapon != null)
             {
-                _equipManager.EquipedWeapon.Shoot(scope.position);
+                _equipManager.EquipedWeapon.Shoot(muzzleDir.origin,
+                    muzzleDir.direction);
             }
         }
     }

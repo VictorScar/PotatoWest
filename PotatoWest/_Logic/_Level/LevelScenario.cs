@@ -17,7 +17,7 @@ public class LevelScenario : MonoBehaviour
     public async UniTask Run(CancellationToken token)
     {
         await UniTask.WaitForSeconds(5f, cancellationToken: token);
-        _data.NpcSpawner.SpawnActor();
+        //_data.NpcSpawner.SpawnActor();
         // _data.
     }
 }
