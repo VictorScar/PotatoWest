@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 88965642787244898}
   - component: {fileID: 5693199778388576372}
   m_Layer: 12
-  m_Name: Sphere (1)
+  m_Name: eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,7 +217,6 @@ GameObject:
   - component: {fileID: 5462321027362298786}
   - component: {fileID: 3484722075686435548}
   - component: {fileID: 7869334792351917763}
-  - component: {fileID: 400119122438819535}
   m_Layer: 12
   m_Name: Capsule (2)
   m_TagString: Untagged
@@ -290,29 +289,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &400119122438819535
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951136032823963178}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1140150111723309654
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +300,6 @@ GameObject:
   - component: {fileID: 2962055408007772230}
   - component: {fileID: 3825927253291217183}
   - component: {fileID: 553332511112727943}
-  - component: {fileID: 4721473398806887020}
   m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
@@ -397,27 +372,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4721473398806887020
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140150111723309654}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1377273489900085176
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +384,7 @@ GameObject:
   - component: {fileID: 7407137523428282475}
   - component: {fileID: 7905724529020353258}
   m_Layer: 12
-  m_Name: Sphere
+  m_Name: eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -596,7 +550,7 @@ GameObject:
   - component: {fileID: 3110406622493452039}
   - component: {fileID: 4479153698443481346}
   m_Layer: 12
-  m_Name: Sphere (2)
+  m_Name: noise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -679,7 +633,7 @@ GameObject:
   - component: {fileID: 2429689315933853672}
   - component: {fileID: 6908055228857541762}
   m_Layer: 12
-  m_Name: Capsule
+  m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -844,7 +798,6 @@ GameObject:
   - component: {fileID: 1630531789447008902}
   - component: {fileID: 6946927091390331413}
   - component: {fileID: 786856325694600913}
-  - component: {fileID: 7280961719781243325}
   m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -917,27 +870,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7280961719781243325
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3813302455072898788}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3956974059237138436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,7 +1024,7 @@ GameObject:
   - component: {fileID: 9031414612508823309}
   - component: {fileID: 2396833935217365348}
   m_Layer: 12
-  m_Name: Capsule (1)
+  m_Name: neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1258,7 +1190,7 @@ GameObject:
   - component: {fileID: 2533779163515137122}
   - component: {fileID: 3542407671458253101}
   m_Layer: 12
-  m_Name: enemy1
+  m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1300,6 +1232,7 @@ MonoBehaviour:
   _animator: {fileID: 8407376789453383010}
   equipManager: {fileID: 4403912115734397659}
   inventory: {fileID: 8918854228811640200}
+  shootingController: {fileID: 0}
 --- !u!143 &3542407671458253101
 CharacterController:
   m_ObjectHideFlags: 0

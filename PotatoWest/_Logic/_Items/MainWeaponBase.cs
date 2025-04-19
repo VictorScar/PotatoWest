@@ -50,7 +50,7 @@ namespace PotatoWest._Logic._Items
                 {
                     onShoot?.Invoke();
                     //Debug.Log("Shoot");
-                    
+                    Debug.DrawLine(muuzzlePosition, muuzzlePosition + shootDir*200f, Color.red, 1f);
                    if(Physics.Raycast(muuzzlePosition, shootDir, out var hit, maxShootDistance))
                    {
                        if (hit.collider.TryGetComponent<IShootTarget>(out var target))

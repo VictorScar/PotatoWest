@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using PotatoWest._Logic._Configs;
 using PotatoWest._Logic._Core;
+using PotatoWest._Logic._Level._Scenarios;
 using PotatoWest._Player;
 using UnityEngine;
 

@@ -54,9 +54,13 @@ namespace PotatoWest._Logic._Level
         }
 
         [Button("SpawnNPC")]
-        public void SpawnActor()
+        public void Spawn()
         {
-            
+            SpawnActor();
+        }
+        
+        public bool SpawnActor()
+        {
             if (GetRandomFreeSpawn(out var spawn))
             {
                 var actorPrefab = GetPrefab();
@@ -71,15 +75,18 @@ namespace PotatoWest._Logic._Level
                     actor.onRemove += RemoveActor;
                     _spawnedActorsData.Add(actor, spawn);
                     Debug.Log("Spawn Actor!");
+                    return true;
                 }
                 else
                 {
                     Debug.LogError("No prefabs to spawn!");
+                    return false;
                 }
             }
             else
             {
                 Debug.Log("No free spawns");
+                return false;
             }
         }
 
