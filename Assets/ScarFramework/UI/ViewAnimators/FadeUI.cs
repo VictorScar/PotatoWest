@@ -17,7 +17,7 @@ namespace ScarFramework.UI.ViewAnimators
                 .Append(view.CG.DOFade(endValue, duration).SetEase(ease));
             return internalAnimation;
         }
-  
+
 
         protected override void OnStartAnimation(UIView view)
         {
@@ -26,9 +26,8 @@ namespace ScarFramework.UI.ViewAnimators
 
         protected override void OnEndAnimation()
         {
-            Debug.Log("Animation ended!");
-           // _view.CG.alpha = endValue;
+            //Debug.Log("Animation ended!");
+            // _view.CG.alpha = endValue;
         }
-
     }
 }

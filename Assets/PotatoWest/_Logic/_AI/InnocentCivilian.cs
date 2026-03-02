@@ -6,7 +6,7 @@ namespace PotatoWest._Logic._AI
   {
     protected async override UniTask DoAction()
     {
-      _mover.MoveToWaypoint(transform.position + transform.forward * 5f, 5f);
+     // _mover.MoveToWaypoint(transform.position + transform.forward * 5f, 5f);
       
     }
   }

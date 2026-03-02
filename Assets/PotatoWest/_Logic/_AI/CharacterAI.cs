@@ -16,7 +16,7 @@ namespace PotatoWest._Logic._AI
         [SerializeField] protected Animator _animator;
         [SerializeField] protected float moveSpeed = 0.5f;
         [SerializeField] protected CharacterAIStateController stateController;
-        [SerializeField] private AICharacterParameters parameters;
+        [SerializeField] protected AICharacterParameters parameters;
 
         protected Level _level;
         private Health _health;
@@ -25,9 +25,11 @@ namespace PotatoWest._Logic._AI
 
         public void Init(Level level)
         {
+            Debug.Log("Init Character");
             _health = new Health(100f);
             _level = level;
-            stateController.Init(new AIStateContext { Animator = _animator, Mover = _mover, Level = _level, Parameters = parameters});
+            _mover.Init(parameters);
+            
             OnInit();
             DoAction();
         }
@@ -55,6 +57,7 @@ namespace PotatoWest._Logic._AI
 
         protected virtual void OnInit()
         {
+            stateController.Init(new AIStateContext { Animator = _animator, Mover = _mover, Level = _level, Parameters = parameters});
         }
 
         protected void Say()

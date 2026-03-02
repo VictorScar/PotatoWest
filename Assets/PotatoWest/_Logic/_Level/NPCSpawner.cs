@@ -20,7 +20,7 @@ namespace PotatoWest._Logic._Level
             _level = level;
             _spawnerConfig = spawnerConfig;
 
-            ClearSpawnenActors();
+            ClearSpawnedActors();
 
             var spawnDatas = _spawnerConfig.AISpawnData;
 
@@ -43,7 +43,7 @@ namespace PotatoWest._Logic._Level
 
 
         [Button("Clear")]
-        public void ClearSpawnenActors()
+        public void ClearSpawnedActors()
         {
             if (_spawnedActorsData != null)
             {
