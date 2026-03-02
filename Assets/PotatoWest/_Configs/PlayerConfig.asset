@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae183806eb4e4185830eb47b5c4a3534, type: 3}
+  m_Name: PlayerConfig
+  m_EditorClassIdentifier: 
+  playerPawnPrefab: {fileID: 5162424892548537280, guid: d8d52fa22e32a7840b0f1e53bf4be93e,
+    type: 3}
+  pawnConfig: {fileID: 11400000, guid: 3f3b2fb90eeaff34db399741a46fbf98, type: 2}

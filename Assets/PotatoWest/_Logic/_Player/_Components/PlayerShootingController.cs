@@ -1,0 +1,57 @@
+using PotatoWest._Input.Data;
+using UnityEngine;
+using UnityEngine.Serialization;
+
+namespace PotatoWest._Logic._Player._Components
+{
+    public class PlayerShootingController : MonoBehaviour
+    {
+        [SerializeField] private Transform scope;
+        [SerializeField] private float maxShootDistance = 100f;
+
+        private Camera _playerCamera;
+        private EquipManager _equipManager;
+        public Transform Scope => scope;
+
+        public void Init(Camera playerCamera, EquipManager equipManager)
+        {
+            _playerCamera = playerCamera;
+            _equipManager = equipManager;
+        }
+
+        public void SetInputs(ShootInputData inputData)
+        {
+            if (_playerCamera != null)
+            {
+                var shootRay = _playerCamera.ScreenPointToRay(inputData.ScopePosition);
+
+                if (Physics.Raycast(shootRay, out var hit, maxShootDistance))
+                {
+                    scope.position = hit.point;
+                }
+                else
+                {
+                    scope.position = shootRay.origin + shootRay.direction * 100f;
+                }
+
+                _equipManager?.WeaponSocket.LookAt(scope);
+
+                if (inputData.ShootKeyInfo.IsPressed && inputData.ShootKeyInfo.HasBeenReleased)
+                {
+                    Shoot(inputData.ScopePosition);
+                }
+            }
+        }
+
+        public void Shoot(Vector3 scopePos)
+        {
+            var muzzleDir = _playerCamera.ScreenPointToRay(scopePos);
+           // Debug.Log("Scope Pos: " + muzzleDir.origin);
+            if (_equipManager.EquipedWeapon != null)
+            {
+                _equipManager.EquipedWeapon.Shoot(muzzleDir.origin,
+                    muzzleDir.direction);
+            }
+        }
+    }
+}
