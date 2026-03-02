@@ -1,4 +1,3 @@
-using System.ComponentModel.Design;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using PotatoWest._Logic._Configs;
@@ -40,6 +39,8 @@ namespace PotatoWest._Logic._Level._Scenarios
                 {
                     await part.Run(token);
                 }
+                
+                Debug.Log("All part ended!");
             }
         }
 

@@ -6,6 +6,7 @@ namespace PotatoWest._Logic._AI.Components._AIStates
     public abstract class AiCharacterState : MonoBehaviour
     {
         protected AIStateContext Context;
+        public IAIStateController StateController { get; set; }
 
         public void Init(AIStateContext context)
         {
@@ -35,5 +36,6 @@ namespace PotatoWest._Logic._AI.Components._AIStates
         public AIMover Mover;
         public Level Level;
         public AICharacterParameters Parameters;
+        public SpawnData SpawnData;
     }
 }

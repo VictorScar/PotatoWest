@@ -42,6 +42,7 @@ namespace PotatoWest._Logic._Level._Scenarios
         protected override void OnScenarioEnd()
         {
             _data.NpcSpawner.ClearSpawnedActors();
+            Debug.Log("YOU WIN!");
         }
     }
 }

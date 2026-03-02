@@ -18,15 +18,16 @@ namespace PotatoWest._Logic._AI
         {
             shootingController.Init(new AIShootSystemData
                 { ShootDelay = 2f, EquipManager = equipManager, Mover = _mover });
-            stateController.Init(new AIStateContext{ShootController = shootingController, Mover = _mover, Animator = _animator, Level = _level, Parameters = parameters});
+            stateController.Init(new AIStateContext{ShootController = shootingController, Mover = _mover, 
+                Animator = _animator, Level = _level, Parameters = parameters, SpawnData = spawnData});
         }
 
-        protected override UniTask DoAction()
+        /*protected override UniTask DoAction()
         {
-            stateController.SetState<DefaultAiState>();
-            stateController.SetState<AttackAIState>();
+            //stateController.SetState<DefaultAiState>();
+            /stateController.SetState<AttackAIState>();
             return UniTask.CompletedTask;
-        }
+        }*/
 
         public override void OnHit(MainWeaponBase mainWeapon)
         {

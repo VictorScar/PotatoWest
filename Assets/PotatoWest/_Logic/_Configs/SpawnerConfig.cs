@@ -8,7 +8,7 @@ namespace PotatoWest._Logic._Configs
    [Serializable]
     public struct SpawnerConfig
     {
-        [FormerlySerializedAs("aiCharacters")] [SerializeField] private SpawnAIInfo[] aiSpawnData;
+        [SerializeField] private SpawnAIInfo[] aiSpawnData;
 
         public SpawnAIInfo[] AISpawnData => aiSpawnData;
     }

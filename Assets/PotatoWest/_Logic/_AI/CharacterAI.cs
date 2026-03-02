@@ -19,15 +19,17 @@ namespace PotatoWest._Logic._AI
         [SerializeField] protected AICharacterParameters parameters;
 
         protected Level _level;
+        protected SpawnData spawnData;
         private Health _health;
 
         public event Action<CharacterAI> onRemove;
 
-        public void Init(Level level)
+        public void Init(Level level, SpawnData spawnData)
         {
             Debug.Log("Init Character");
             _health = new Health(100f);
             _level = level;
+            this.spawnData = spawnData;
             _mover.Init(parameters);
             
             OnInit();
@@ -36,6 +38,7 @@ namespace PotatoWest._Logic._AI
 
         protected virtual UniTask DoAction()
         {
+            stateController.SetNextState();
             return UniTask.CompletedTask;
         }
 
@@ -57,7 +60,7 @@ namespace PotatoWest._Logic._AI
 
         protected virtual void OnInit()
         {
-            stateController.Init(new AIStateContext { Animator = _animator, Mover = _mover, Level = _level, Parameters = parameters});
+            stateController.Init(new AIStateContext { Animator = _animator, Mover = _mover, Level = _level, Parameters = parameters, SpawnData = spawnData});
         }
 
         protected void Say()

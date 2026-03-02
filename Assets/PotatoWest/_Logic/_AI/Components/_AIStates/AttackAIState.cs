@@ -8,7 +8,6 @@ public class AttackAIState : AiCharacterState
 {
     public override void Enter()
     {
-        Debug.Log("ATTACK STATE");
         var player = Context.Level.Player;
         //Context.Mover.MoveToWaypoint(transform.position + transform.forward * 5f, Context.Parameters.MoveSpeed);
         Context.ShootController.Target = player.transform;

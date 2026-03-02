@@ -6,9 +6,8 @@ namespace PotatoWest._Logic._AI.Components._AIStates
     {
         public override void Enter()
         {
-            Debug.Log("DEFAULT STATE");
-            //Context.Animator.SetTrigger("Reset");
             Context.Animator.SetBool("IsDead", false);
+            StateController.SetNextState();
         }
         
         

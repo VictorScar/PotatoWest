@@ -72,7 +72,7 @@ namespace PotatoWest._Logic._Level
                 {
                     spawn.IsBusy = true;
                     var actor = Instantiate(actorPrefab, spawn.transform.position, spawn.transform.rotation, transform);
-                    actor.Init(_level);
+                    actor.Init(_level, new SpawnData{EntrancePoint = spawn.TargetPoint.position});
                     actor.onRemove += RemoveActor;
                     _spawnedActorsData.Add(actor, spawn);
                     Debug.Log("Spawn Actor!");
@@ -151,5 +151,10 @@ namespace PotatoWest._Logic._Level
             spawn = null;
             return false;
         }
+    }
+    
+    public struct SpawnData
+    {
+        public Vector3 EntrancePoint;
     }
 }

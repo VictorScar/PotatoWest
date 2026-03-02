@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Threading;
-using Cysharp.Threading.Tasks;
 using PotatoWest._Logic._AI.Components;
 using UnityEngine;
 
@@ -28,6 +25,7 @@ namespace PotatoWest._Logic._AI
                 Debug.Log($"Set Waypoints {value.Waypoints != null}");
                 _waypointData = value;
                 _waypointNumber = 0;
+                _isStopped = false;
             }
         }
 
@@ -45,6 +43,7 @@ namespace PotatoWest._Logic._AI
         public void MoveToTarget(Transform target)
         {
             _moveTarget = target;
+            _isStopped = false;
         }
 
         public void Update()
@@ -56,7 +55,17 @@ namespace PotatoWest._Logic._AI
         {
             if (_moveTarget != null)
             {
-                _targetPoint = new Waypoint { Point = _moveTarget.position };
+                if (Vector3.Distance(body.position, _moveTarget.position) > _moveThreshold + 0.5f)
+                {
+                    body.position += (_moveTarget.position - body.position).normalized * _speed * Time.deltaTime;
+                    
+                }
+                else
+                {
+                    _moveTarget = null;
+                }
+                
+                return;
             }
 
             if (!_targetPoint.IsInvalid)
@@ -68,18 +77,17 @@ namespace PotatoWest._Logic._AI
                 }
             }
 
-            if(!_isStopped) GetNextPoint();
+            if (!_isStopped) GetNextPoint();
         }
 
         private void GetNextPoint()
         {
             if (_waypointData.IsValid)
             {
-                _waypointNumber++;
-
                 if (_waypointNumber < _waypointData.Waypoints.Length)
                 {
                     _targetPoint = _waypointData.Waypoints[_waypointNumber];
+                    _waypointNumber++;
                 }
                 else if (_waypointData.IsLooped)
                 {
