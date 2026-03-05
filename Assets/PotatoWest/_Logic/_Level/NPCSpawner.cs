@@ -9,9 +9,9 @@ namespace PotatoWest._Logic._Level
     public class NPCSpawner : MonoBehaviour
     {
         [SerializeField] private NPCSpawn[] spawns;
-
-        private SpawnerConfig _spawnerConfig;
+        
         private List<CharacterAI> _pendingSpawns;
+        private SpawnerConfig _spawnerConfig;
         private Level _level;
         private Dictionary<CharacterAI, NPCSpawn> _spawnedActorsData = new Dictionary<CharacterAI, NPCSpawn>();
 
@@ -72,7 +72,7 @@ namespace PotatoWest._Logic._Level
                 {
                     spawn.IsBusy = true;
                     var actor = Instantiate(actorPrefab, spawn.transform.position, spawn.transform.rotation, transform);
-                    actor.Init(_level, new SpawnData{EntrancePoint = spawn.TargetPoint.position});
+                    actor.Init(_level, new SpawnData{EntrancePoint = spawn.TargetPoint.position, SpawnPoint = spawn.SpawnPoint.position});
                     actor.onRemove += RemoveActor;
                     _spawnedActorsData.Add(actor, spawn);
                     Debug.Log("Spawn Actor!");
@@ -156,5 +156,6 @@ namespace PotatoWest._Logic._Level
     public struct SpawnData
     {
         public Vector3 EntrancePoint;
+        public Vector3 SpawnPoint;
     }
 }

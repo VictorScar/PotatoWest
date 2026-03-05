@@ -16,5 +16,8 @@ MonoBehaviour:
     aiSpawnData:
     - CharacterAI: {fileID: 2533779163515137122, guid: 8af14eb0c9302ce49997cfabb64b639a,
         type: 3}
+      Chance: 2
+    - CharacterAI: {fileID: 4854824517365890736, guid: be40dcc4e1642824c8420fb2c9048885,
+        type: 3}
       Chance: 1
   stages: []

@@ -111,6 +111,11 @@ namespace PotatoWest._Logic._AI
             }
         }
 
+        public void RotateTo(Vector3 targetPoint)
+        {
+            body.rotation = Quaternion.LookRotation((targetPoint - body.transform.position).normalized);
+        }
+
         public void Stop()
         {
             _moveTarget = null;

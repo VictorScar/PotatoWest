@@ -59,6 +59,14 @@ namespace PotatoWest._Logic._Items
                        {
                            target.OnHit(this);
                        }
+                       else
+                       {
+                           Debug.Log("Not target!");
+                       }
+                   }
+                   else
+                   {
+                       Debug.Log("Missed!");
                    }
                     _currentAmmoCount--;
                     _lastShootTime = shootCooldown;

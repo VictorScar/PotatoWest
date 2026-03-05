@@ -7,8 +7,8 @@ namespace ScarFramework.UI
 {
     public class UIClickableView : UIView, IPointerClickHandler, IPointerUpHandler, IPointerDownHandler
     {
-        [SerializeField] private UIAnimator onClickDownAnimator;
-        [SerializeField] private UIAnimator onClickUpAnimator;
+        [SerializeReference, SerializeField] private UIAnimator onClickDownAnimator;
+        [SerializeReference, SerializeField] private UIAnimator onClickUpAnimator;
         public event Action<UIClickableView> onClick;
         
         public void OnPointerClick(PointerEventData eventData)

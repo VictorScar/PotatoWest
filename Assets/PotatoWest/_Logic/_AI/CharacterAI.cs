@@ -77,6 +77,11 @@ namespace PotatoWest._Logic._AI
            
         }
 
+        public void RemoveCharacter()
+        {
+            onRemove?.Invoke(this);
+        }
+
         protected void Die()
         {
             stateController.SetState<DeadAIState>();
@@ -84,10 +89,10 @@ namespace PotatoWest._Logic._AI
             DeleteCharacter();
         }
 
-        public async UniTask DeleteCharacter()
+        private async UniTask DeleteCharacter()
         {
             await UniTask.WaitForSeconds(2f);
-            onRemove?.Invoke(this);
+            RemoveCharacter();
         }
 
         [Button("DestroyChar")]
