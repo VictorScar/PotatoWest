@@ -280,10 +280,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 5499395873980745820}
   cg: {fileID: 7192747299217593753}
-  showInAnimator: {fileID: 11400000, guid: c62cd52466871484a853b58dec7ff345, type: 2}
-  hideInAnimator: {fileID: 11400000, guid: 4fe9dff0af5a6f04c8e5c236658fd8e8, type: 2}
+  showInAnimator:
+    rid: 617622199751409664
+  hideInAnimator:
+    rid: 617622199751409665
   showOnInit: 0
   canvas: {fileID: 3369648720641182305}
+  references:
+    version: 2
+    RefIds:
+    - rid: 617622199751409664
+      type: {class: FadeUI, ns: ScarFramework.UI.ViewAnimators, asm: Assembly-CSharp}
+      data:
+        duration: 0.2
+        ease: 6
+        startValue: 0
+        endValue: 1
+    - rid: 617622199751409665
+      type: {class: FadeUI, ns: ScarFramework.UI.ViewAnimators, asm: Assembly-CSharp}
+      data:
+        duration: 0.2
+        ease: 6
+        startValue: 1
+        endValue: 0
 --- !u!1 &3526989396824769376
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,12 +930,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 1154432956442553640}
   cg: {fileID: 4932539160911883827}
-  showInAnimator: {fileID: 11400000, guid: c62cd52466871484a853b58dec7ff345, type: 2}
-  hideInAnimator: {fileID: 11400000, guid: 4fe9dff0af5a6f04c8e5c236658fd8e8, type: 2}
+  showInAnimator:
+    rid: 617622199751409666
+  hideInAnimator:
+    rid: 617622199751409667
   showOnInit: 1
   canvas: {fileID: 758717170701075212}
   loadingIcon: {fileID: 2544890919309438863}
   speed: 200
+  references:
+    version: 2
+    RefIds:
+    - rid: 617622199751409666
+      type: {class: FadeUI, ns: ScarFramework.UI.ViewAnimators, asm: Assembly-CSharp}
+      data:
+        duration: 0.4
+        ease: 5
+        startValue: 0
+        endValue: 1
+    - rid: 617622199751409667
+      type: {class: FadeUI, ns: ScarFramework.UI.ViewAnimators, asm: Assembly-CSharp}
+      data:
+        duration: 0.6
+        ease: 6
+        startValue: 1
+        endValue: 0
 --- !u!1 &6748894184834281414
 GameObject:
   m_ObjectHideFlags: 0

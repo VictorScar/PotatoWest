@@ -1,9 +1,10 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
 namespace ScarFramework.UI.ViewAnimators
 {
-    [CreateAssetMenu(menuName = "UI/Animators/Sequence", fileName = "SequenceUI")]
+    [Serializable]
     public class UISequenceAnimator : UIAnimator
     {
         [SerializeField] private UIAnimator[] animators;

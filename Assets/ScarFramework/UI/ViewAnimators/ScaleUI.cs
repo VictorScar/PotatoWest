@@ -1,14 +1,14 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace ScarFramework.UI.ViewAnimators
 {
-    [CreateAssetMenu(menuName = "UI/Animators/Scale", fileName = "ScaleUI")]
+    [Serializable]
     public class ScaleUI : UIAnimator
     {
-        [SerializeField] protected float startValue = 1;
-        [SerializeField] protected float endValue;
+        [SerializeField] protected float startValue = 1f;
+        [SerializeField] protected float endValue = 1f;
 
 
         protected override Tween AnimateInternal(UIView view)
@@ -19,7 +19,7 @@ namespace ScarFramework.UI.ViewAnimators
                 .Append(view.Rect.DOScale(endValue, duration).SetEase(ease));
             return animationInternal;
         }
- 
+
 
         protected override void OnStartAnimation(UIView view)
         {
@@ -30,6 +30,6 @@ namespace ScarFramework.UI.ViewAnimators
         {
             //_view.Rect.localScale = new Vector3(endValue, endValue, endValue);
             Debug.Log("ScaleUI end");
-       }
+        }
     }
 }

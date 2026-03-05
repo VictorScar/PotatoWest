@@ -747,8 +747,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rect: {fileID: 0}
   cg: {fileID: 8007715884657966383}
-  showInAnimator: {fileID: 11400000, guid: c62cd52466871484a853b58dec7ff345, type: 2}
-  hideInAnimator: {fileID: 11400000, guid: 4fe9dff0af5a6f04c8e5c236658fd8e8, type: 2}
+  showInAnimator:
+    rid: 617622199751409668
+  hideInAnimator:
+    rid: 617622199751409669
+  references:
+    version: 2
+    RefIds:
+    - rid: 617622199751409668
+      type: {class: FadeUI, ns: ScarFramework.UI.ViewAnimators, asm: Assembly-CSharp}
+      data:
+        duration: 0.4
+        ease: 5
+        startValue: 0
+        endValue: 1
+    - rid: 617622199751409669
+      type: {class: FadeUI, ns: ScarFramework.UI.ViewAnimators, asm: Assembly-CSharp}
+      data:
+        duration: 0.4
+        ease: 6
+        startValue: 1
+        endValue: 0
 --- !u!1 &2395078481537749456
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,14 +1,15 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
 namespace ScarFramework.UI.ViewAnimators
 {
-    [CreateAssetMenu(menuName = "UI/Animators/Rotate", fileName = "RotateUI")]
+    [Serializable]
     public class RotateUI : UIAnimator
     {
-        [SerializeField] private Vector3 startValue;
-        [SerializeField] private Vector3 endValue;
-        
+        [SerializeField] private Vector3 startValue = Vector3.one;
+        [SerializeField] private Vector3 endValue = Vector3.one;
+
         protected override Tween AnimateInternal(UIView view)
         {
             var animationInternal = DOTween.Sequence();
@@ -20,7 +21,6 @@ namespace ScarFramework.UI.ViewAnimators
             return animationInternal;
         }
 
-  
 
         protected override void OnStartAnimation(UIView view)
         {
@@ -29,7 +29,5 @@ namespace ScarFramework.UI.ViewAnimators
         protected override void OnEndAnimation()
         {
         }
-
-
     }
 }

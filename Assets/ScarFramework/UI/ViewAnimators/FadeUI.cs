@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace ScarFramework.UI.ViewAnimators
 {
-    [CreateAssetMenu(menuName = "UI/Animators/Fade", fileName = "FadeUI")]
+    [Serializable]
     public class FadeUI : UIAnimator
     {
-        [SerializeField] protected float startValue = 1;
-        [SerializeField] protected float endValue = 1;
+        [SerializeField] protected float startValue = 1f;
+        [SerializeField] protected float endValue = 0;
 
         protected override Tween AnimateInternal(UIView view)
         {
@@ -27,7 +27,7 @@ namespace ScarFramework.UI.ViewAnimators
         protected override void OnEndAnimation()
         {
             //Debug.Log("Animation ended!");
-            // _view.CG.alpha = endValue;
+            _cashedView.CG.alpha = endValue;
         }
     }
 }

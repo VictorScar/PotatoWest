@@ -13,24 +13,31 @@ namespace ScarFramework.UI
 
         [SerializeField] private CanvasGroup cg;
 
-        [Header("Animations")] [SerializeField]
+        [Header("Animations")] [SerializeReference, SerializeField]
         private UIAnimator showInAnimator;
 
-        [SerializeField] private UIAnimator hideInAnimator;
+        [SerializeReference, SerializeField] private UIAnimator hideInAnimator;
 
 
         public RectTransform Rect => rect;
-        public CanvasGroup CG => cg;
+
+        public CanvasGroup CG
+        {
+            get
+            {
+                if (!cg)
+                {
+                    cg = GetComponent<CanvasGroup>();
+                }
+
+                return cg;
+            }
+        }
 
         public void Init()
         {
-            if (!cg)
-            {
-                cg = GetComponent<CanvasGroup>();
-            }
-            
             showInAnimator?.Init(this);
-           hideInAnimator?.Init(this);
+            hideInAnimator?.Init(this);
 
             OnInit();
         }
@@ -62,13 +69,13 @@ namespace ScarFramework.UI
 
         public Tween Show(bool immediately = false)
         {
-            ShowInternal();
-            
+            gameObject.SetActive(true);
+
             if (!immediately)
             {
-                if (showInAnimator)
+                if (showInAnimator != null)
                 {
-                    return showInAnimator.PlayAnimation(this).OnKill(ShowInternal);
+                    return showInAnimator.PlayAnimation(this).OnComplete(OnShow);
                 }
             }
 
@@ -81,27 +88,14 @@ namespace ScarFramework.UI
 
             if (!immediately)
             {
-                if (hideInAnimator)
+                if (hideInAnimator != null)
                 {
-                    return hideInAnimator.PlayAnimation(this).OnKill(HideInternal);
-                }
-                else
-                {
-                    HideInternal();
-                    return null;
+                    return hideInAnimator.PlayAnimation(this).OnComplete(HideInternal);
                 }
             }
-            else
-            {
-                HideInternal();
-                return null;
-            }
-        }
 
-        private void ShowInternal()
-        {
-            gameObject.SetActive(true);
-            OnShow();
+            HideInternal();
+            return null;
         }
 
         private void HideInternal()

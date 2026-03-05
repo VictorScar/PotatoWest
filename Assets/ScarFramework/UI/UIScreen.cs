@@ -1,3 +1,4 @@
+using TriInspector;
 using UnityEngine;
 
 namespace ScarFramework.UI
@@ -14,6 +15,16 @@ namespace ScarFramework.UI
             gameObject.SetActive(showOnInit);
         }
         
+        [Button("Show")]
+        public void TestShow()
+        {
+            Show();
+        }
         
+        [Button]
+        public void TestHide()
+        {
+            Hide();
+        }
     }
 }
