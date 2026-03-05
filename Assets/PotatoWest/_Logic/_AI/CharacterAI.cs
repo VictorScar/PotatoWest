@@ -16,19 +16,18 @@ namespace PotatoWest._Logic._AI
         [SerializeField] protected Animator _animator;
         [SerializeField] protected float moveSpeed = 0.5f;
         [SerializeField] protected CharacterAIStateController stateController;
-        [SerializeField] protected AICharacterParameters parameters;
+        [SerializeField] protected CharacterParameters parameters;
 
         protected Level _level;
         protected SpawnData spawnData;
-        private Health _health;
-
+       
         public event Action<CharacterAI> onRemove;
 
         public void Init(Level level, SpawnData spawnData)
         {
             Debug.Log("Init Character");
-            _health = new Health(100f);
-            _level = level;
+           _level = level;
+            parameters.Init();
             this.spawnData = spawnData;
             _mover.Init(parameters);
             
@@ -47,11 +46,11 @@ namespace PotatoWest._Logic._AI
         {
             Debug.Log("Hit Character!");
 
-            if (_health.Value > 0)
+            if (parameters.Health > 0)
             {
-                _health.DoDamage(mainWeapon.Damage);
+                parameters.DoDamage(mainWeapon.Damage);
 
-                if (_health.Value <= 0)
+                if (parameters.Health <= 0)
                 {
                     Die();
                 }

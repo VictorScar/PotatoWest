@@ -1,7 +1,11 @@
+using UnityEngine;
+
 namespace PotatoWest._Logic._AI.Components._AIStates
 {
     public class EntranceState : AiCharacterState
     {
+        [SerializeField] private float speedMultiplier = 1.5f;
+        
         public override void Enter()
         {
             var entrancePoint = Context.SpawnData.EntrancePoint;
@@ -12,6 +16,13 @@ namespace PotatoWest._Logic._AI.Components._AIStates
                     new Waypoint { Point = entrancePoint }
                 }
             };
+            
+            Context.Parameters.SetModifierValue(ModifiersDict.MoveSpeedMod, speedMultiplier);
+        }
+
+        public override void Exit()
+        {
+            Context.Parameters.ResetModifier(ModifiersDict.MoveSpeedMod);
         }
 
         public override void UpdateState(float deltaTime)

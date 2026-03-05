@@ -12,10 +12,11 @@ namespace PotatoWest._Logic._AI
 
         private Waypoint _targetPoint;
         private Transform _moveTarget;
-        private float _speed = 5f;
+
         private float _moveThreshold = 0.1f;
         private int _waypointNumber;
         private bool _isStopped;
+        private CharacterParameters _parameters;
 
         public WaypointData WaypointData
         {
@@ -31,10 +32,10 @@ namespace PotatoWest._Logic._AI
 
         public bool IsMoving => _moveTarget != null || !_targetPoint.IsInvalid;
 
-        public void Init(AICharacterParameters parameters)
+        public void Init(CharacterParameters parameters)
         {
             Debug.Log("Init Mover");
-            _speed = parameters.MoveSpeed;
+            _parameters = parameters;
             WaypointData = new WaypointData();
             _targetPoint = Waypoint.Invalid;
             _isStopped = false;
@@ -57,14 +58,14 @@ namespace PotatoWest._Logic._AI
             {
                 if (Vector3.Distance(body.position, _moveTarget.position) > _moveThreshold + 0.5f)
                 {
-                    body.position += (_moveTarget.position - body.position).normalized * _speed * Time.deltaTime;
-                    
+                    body.position += (_moveTarget.position - body.position).normalized * _parameters.MoveSpeed *
+                                     Time.deltaTime;
                 }
                 else
                 {
                     _moveTarget = null;
                 }
-                
+
                 return;
             }
 
@@ -72,7 +73,8 @@ namespace PotatoWest._Logic._AI
             {
                 if (Vector3.Distance(body.position, _targetPoint.Point) > _moveThreshold)
                 {
-                    body.position += (_targetPoint.Point - body.position).normalized * _speed * Time.deltaTime;
+                    body.position += (_targetPoint.Point - body.position).normalized * _parameters.MoveSpeed *
+                                     Time.deltaTime;
                     return;
                 }
             }

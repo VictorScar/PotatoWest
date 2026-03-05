@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using PotatoWest._Logic._AI.Components._AIStates;
 using PotatoWest._Logic._Items;
 using PotatoWest._Logic._Player._Components;
@@ -13,7 +12,6 @@ namespace PotatoWest._Logic._AI
         [SerializeField] private CharacterInventory inventory;
         [SerializeField] private AIShootSystem shootingController;
 
-
         protected override void OnInit()
         {
             shootingController.Init(new AIShootSystemData
@@ -21,13 +19,6 @@ namespace PotatoWest._Logic._AI
             stateController.Init(new AIStateContext{ShootController = shootingController, Mover = _mover, 
                 Animator = _animator, Level = _level, Parameters = parameters, SpawnData = spawnData});
         }
-
-        /*protected override UniTask DoAction()
-        {
-            //stateController.SetState<DefaultAiState>();
-            /stateController.SetState<AttackAIState>();
-            return UniTask.CompletedTask;
-        }*/
 
         public override void OnHit(MainWeaponBase mainWeapon)
         {
