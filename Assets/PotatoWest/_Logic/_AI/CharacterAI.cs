@@ -7,16 +7,20 @@ using PotatoWest._Logic._Items;
 using PotatoWest._Logic._Level;
 using ScarFramework.Button;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace PotatoWest._Logic._AI
 {
-    public class CharacterAI : MonoBehaviour, IShootTarget
+    public class CharacterAI : MonoBehaviour, IShootTarget, ICharacter
     {
         [SerializeField] protected AIMover _mover;
         [SerializeField] protected Animator _animator;
         [SerializeField] protected float moveSpeed = 0.5f;
         [SerializeField] protected CharacterAIStateController stateController;
         [SerializeField] protected CharacterParameters parameters;
+        [SerializeField] private NPCSayDisplay sayDisplay;
+
+        [SerializeField] private string[] phrases;
 
         protected Level _level;
         protected SpawnData spawnData;
@@ -28,6 +32,7 @@ namespace PotatoWest._Logic._AI
             Debug.Log("Init Character");
            _level = level;
             parameters.Init();
+            sayDisplay.Init();
             this.spawnData = spawnData;
             _mover.Init(parameters);
             
@@ -59,11 +64,17 @@ namespace PotatoWest._Logic._AI
 
         protected virtual void OnInit()
         {
-            stateController.Init(new AIStateContext { Animator = _animator, Mover = _mover, Level = _level, Parameters = parameters, SpawnData = spawnData});
+            stateController.Init(new AIStateContext { Animator = _animator, Mover = _mover, Character = this, Level = _level, Parameters = parameters, SpawnData = spawnData});
         }
 
-        protected void Say()
+        public void Say(float startDelay = 0f)
         {
+            if (phrases != null && phrases.Length > 0)
+            {
+                var msg = phrases[Random.Range(0, phrases.Length)];
+                sayDisplay.ShowSayText(msg, startDelay);
+            }
+           
         }
 
         protected void Die()

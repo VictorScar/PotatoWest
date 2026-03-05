@@ -17,7 +17,8 @@ namespace PotatoWest._Logic._AI
             shootingController.Init(new AIShootSystemData
                 { ShootDelay = 2f, EquipManager = equipManager, Mover = _mover });
             stateController.Init(new AIStateContext{ShootController = shootingController, Mover = _mover, 
-                Animator = _animator, Level = _level, Parameters = parameters, SpawnData = spawnData});
+                Character = this, Animator = _animator, Level = _level, Parameters = parameters,
+                SpawnData = spawnData});
         }
 
         public override void OnHit(MainWeaponBase mainWeapon)

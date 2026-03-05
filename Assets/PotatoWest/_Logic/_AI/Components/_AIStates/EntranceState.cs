@@ -5,6 +5,7 @@ namespace PotatoWest._Logic._AI.Components._AIStates
     public class EntranceState : AiCharacterState
     {
         [SerializeField] private float speedMultiplier = 1.5f;
+        [SerializeField] private float sayDelay = 0.5f;
         
         public override void Enter()
         {
@@ -18,6 +19,7 @@ namespace PotatoWest._Logic._AI.Components._AIStates
             };
             
             Context.Parameters.SetModifierValue(ModifiersDict.MoveSpeedMod, speedMultiplier);
+            Context.Character.Say(sayDelay);
         }
 
         public override void Exit()

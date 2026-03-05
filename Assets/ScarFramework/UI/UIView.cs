@@ -60,45 +60,41 @@ namespace ScarFramework.UI
             hideInAnimator?.Kill();
         }
 
-        public void Show(bool immediately = false)
+        public Tween Show(bool immediately = false)
         {
+            ShowInternal();
+            
             if (!immediately)
             {
                 if (showInAnimator)
                 {
-                    showInAnimator.PlayAnimation(this).OnKill(ShowInternal);
-                    gameObject.SetActive(true);
-                }
-                else
-                {
-                    ShowInternal();
+                    return showInAnimator.PlayAnimation(this).OnKill(ShowInternal);
                 }
             }
-            else
-            {
-                ShowInternal();
-            }
+
+            return null;
         }
 
-        public void Hide(bool immediately = false)
+        public Tween Hide(bool immediately = false)
         {
-            showInAnimator?.Kill();
+            showInAnimator?.Kill(true);
 
             if (!immediately)
             {
                 if (hideInAnimator)
                 {
-                    hideInAnimator.PlayAnimation(this).OnKill(HideInternal);
+                    return hideInAnimator.PlayAnimation(this).OnKill(HideInternal);
                 }
                 else
                 {
                     HideInternal();
+                    return null;
                 }
             }
             else
             {
-                gameObject.SetActive(false);
-                OnHide();
+                HideInternal();
+                return null;
             }
         }
 

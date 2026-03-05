@@ -34,6 +34,7 @@ namespace PotatoWest._Logic._AI.Components._AIStates
         public Animator Animator;
         public AIShootSystem ShootController;
         public AIMover Mover;
+        public ICharacter Character;
         public Level Level;
         public CharacterParameters Parameters;
         public SpawnData SpawnData;

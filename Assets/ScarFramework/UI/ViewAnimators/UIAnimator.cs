@@ -27,9 +27,9 @@ namespace ScarFramework.UI.ViewAnimators
 
         protected abstract Tween AnimateInternal(UIView view);
 
-        public void Kill()
+        public void Kill(bool isComplete = false)
         {
-            _animation?.Kill();
+            _animation?.Kill(isComplete);
         }
 
         protected abstract void OnStartAnimation(UIView view);
