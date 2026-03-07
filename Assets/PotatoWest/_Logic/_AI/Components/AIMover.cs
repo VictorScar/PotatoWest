@@ -23,7 +23,7 @@ namespace PotatoWest._Logic._AI
             get => _waypointData;
             set
             {
-                Debug.Log($"Set Waypoints {value.Waypoints != null}");
+             //   Debug.Log($"Set Waypoints {value.Waypoints != null}");
                 _waypointData = value;
                 _waypointNumber = 0;
                 _isStopped = false;

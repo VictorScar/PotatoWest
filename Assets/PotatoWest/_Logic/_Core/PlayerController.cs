@@ -32,6 +32,12 @@ namespace PotatoWest._Logic._Core
             return _pawn;
         }
 
+        public void RemovePawn()
+        {
+            Destroy(_pawn.gameObject);
+            _pawn = null;
+        }
+
         private void Update()
         {
             if (_pawn != null)

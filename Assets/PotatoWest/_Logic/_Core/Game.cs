@@ -9,10 +9,9 @@ namespace PotatoWest._Logic._Core
 {
     public class Game : MonoBehaviour
     {
-        [SerializeField] private MainServiceController serviceController;
+        [SerializeField] private GameServices serviceController;
        
-        //ServiceProvider
-
+      
         private GameConfig _config;
 
         public void Init(GameConfig gameConfig)

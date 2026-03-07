@@ -42,7 +42,7 @@ namespace PotatoWest._Logic._Level
     public struct LevelInitData
     {
         public GameConfig Config;
-        public MainServiceController ServiceController;
+        public GameServices ServiceController;
     }
 
 

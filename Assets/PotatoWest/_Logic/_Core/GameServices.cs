@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PotatoWest._Logic._Core
 {
-    public class MainServiceController : MonoBehaviour
+    public class GameServices : MonoBehaviour
     {
         [SerializeField] private UISystem uiSystem;
         [SerializeField] private LevelController levelController;

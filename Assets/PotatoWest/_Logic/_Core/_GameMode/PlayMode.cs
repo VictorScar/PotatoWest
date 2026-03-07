@@ -1,3 +1,4 @@
+using ScarFramework.UI;
 using UnityEngine;
 
 namespace PotatoWest._Logic._Core._GameMode
