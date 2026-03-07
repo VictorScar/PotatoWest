@@ -4,16 +4,18 @@ using UnityEngine;
 
 namespace PotatoWest._Logic._Scenarios
 {
-    public abstract class GameScenarioBase : MonoBehaviour
+    public abstract class GameScenarioBase<TScenarioData> : MonoBehaviour where TScenarioData: IScenarioData
     {
         protected CancellationTokenSource _internalTokenSource;
+        protected TScenarioData Data;
         
-        public void Init()
+        public void Init(TScenarioData scenarioData)
         {
-            OnInit();
+            Data = scenarioData;
+            OnInit(scenarioData);
         }
 
-        protected virtual void OnInit()
+        protected virtual void OnInit(TScenarioData scenarioData)
         {
             
         }
@@ -43,5 +45,10 @@ namespace PotatoWest._Logic._Scenarios
         {
             
         }
+    }
+
+    public interface IScenarioData
+    {
+        
     }
 }

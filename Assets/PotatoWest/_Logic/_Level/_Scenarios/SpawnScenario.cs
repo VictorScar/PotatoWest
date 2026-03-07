@@ -26,7 +26,7 @@ namespace PotatoWest._Logic._Level._Scenarios
             {
                 var delay = Random.Range(minSpawnTime, maxSpawnTime+0.1f);
                 await UniTask.WaitForSeconds(delay, cancellationToken:token);
-                if (_data.NpcSpawner.SpawnActor())
+                if (Data.NpcSpawner.SpawnActor())
                 {
                     _spawnCount++;
                 }
@@ -41,7 +41,7 @@ namespace PotatoWest._Logic._Level._Scenarios
 
         protected override void OnScenarioEnd()
         {
-            _data.NpcSpawner.ClearSpawnedActors();
+            Data.NpcSpawner.ClearSpawnedActors();
             Debug.Log("YOU WIN!");
         }
     }

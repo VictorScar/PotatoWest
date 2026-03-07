@@ -9,27 +9,25 @@ using PlayMode = PotatoWest._Logic._Core._GameMode.PlayMode;
 
 namespace PotatoWest._Logic._Level._Scenarios
 {
-    public class LevelScenario : GameScenarioBase
+    public class LevelScenario : GameScenarioBase<LevelScenarioData>
     {
         [SerializeField] private Sprite scopeIcon;
-        private Vector2 scopeOffset = new Vector2(62.5f, 62.5f);
+       // private Vector2 scopeOffset = new Vector2(62.5f, 62.5f);
         [SerializeField] private LevelScenarioPart[] scenarioParts;
-        protected LevelScenarioData _data;
         private GameScreen _gameScreen;
 
-        public void Init(LevelScenarioData levelScenarioData)
+        protected override void OnInit(LevelScenarioData scenarioData)
         {
-            _data = levelScenarioData;
-
+            base.OnInit(scenarioData);
             if (scenarioParts != null)
             {
                 foreach (var part in scenarioParts)
                 {
-                    part.Init(levelScenarioData);
+                    part.Init(scenarioData);
                 }
             }
 
-            _gameScreen = _data.GameServices.UISystem.GetScreen<GameScreen>();
+            _gameScreen = Data.GameServices.UISystem.GetScreen<GameScreen>();
         }
 
         protected override async UniTask RunInternal(CancellationToken token)
@@ -37,7 +35,7 @@ namespace PotatoWest._Logic._Level._Scenarios
             if (scenarioParts != null)
             {
                 SpawnPlayer();
-                _data.GameServices.GameModeController.SetMode<PlayMode>();
+                Data.GameServices.GameModeController.SetMode<PlayMode>();
                 _gameScreen.Show();
 
                 foreach (var part in scenarioParts)
@@ -52,13 +50,13 @@ namespace PotatoWest._Logic._Level._Scenarios
 
         private void SpawnPlayer()
         {
-            var playerPawn = _data.GameServices.PlayerController.SpawnPawn(_data.PlayerSpawn.Position,
-                _data.PlayerSpawn.Rotation, transform);
+            var playerPawn = Data.GameServices.PlayerController.SpawnPawn(Data.PlayerSpawn.Position,
+                Data.PlayerSpawn.Rotation, transform);
 
 
-            playerPawn.Init(_data.Config.PlayerConfig.PawnConfig);
+            playerPawn.Init(Data.Config.PlayerConfig.PawnConfig);
 
-            _data.Level.Player = playerPawn;
+            Data.Level.Player = playerPawn;
         }
 
         protected override void OnScenarioEnd()
@@ -66,7 +64,7 @@ namespace PotatoWest._Logic._Level._Scenarios
         }
     }
 
-    public struct LevelScenarioData
+    public struct LevelScenarioData : IScenarioData
     {
         public GameConfig Config;
         public GameServices GameServices;
